@@ -41,17 +41,25 @@ Use the following link -  for a detail guide on how to install custom python mod
 2. **Set up LLMs** using the llama.cpp and Nomic's C backends. These tools make LLMs more accessible and efficient.
 3. **Example code**: **Python**
 
-`from gpt4all import GPT4All
+
+```
+from gpt4all import GPT4All
 
 model = GPT4All("Meta-Llama-3-8B-Instruct.Q4_0.gguf")  # downloads / loads a 4.66GB LLM
 with model.chat_session():
     print(model.generate("How can I run LLMs efficiently on my laptop?", max_tokens=1024))`
+```
 
 ### 6. GPT4ALL Assistant Dynamo File
 
 1. Download the file using the link below, 
 
 ## Usage
+  1. Simpler Dynamo Player Chat Bot.
+
+  2. Chat bot with WinForms UI
+
+  3. Chat bot With Read Dat and CodeAgent. 
 
 
 ## ## Examples Uses
