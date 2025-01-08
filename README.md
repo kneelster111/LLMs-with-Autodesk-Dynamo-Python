@@ -55,7 +55,7 @@ with model.chat_session():
 1. Download the file using the link below, 
 
 ## Usage
-  1. Simpler Dynamo Player Chat Bot.
+  1. Simple Dynamo Player Chat Bot. - https://github.com/kneelster111/Gpt4all-Autodesk-Dynamo-Python/blob/main/GPT4all_DynamoScripts/PY%20-%20GPT4All_Chatbot_1_DynPlayer_.dyn
 
   2. Chat bot with WinForms UI with Conversation History
 
