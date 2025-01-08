@@ -59,7 +59,7 @@ with model.chat_session():
 
   2. Chat bot with WinForms UI with Conversation History
 
-  3. Chat bot With Read Dat and CodeAgent. 
+  3. Chat bot; CodeAgent With Read and write data . 
 
 
 ## ## Examples Uses
