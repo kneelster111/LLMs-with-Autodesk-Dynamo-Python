@@ -7,20 +7,7 @@ In our initial release, we've focused on Dynamo for Autodesk Revit, enabling use
 
 Explore the possibilities with GPT4All and elevate your Autodesk experience to new heights. Visit Nomic AI to learn more.
 
-## Table of Contents
 
-```
-- [Project Title](#project-title)
-- [Description](#description)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Features](#features)
-- [Configuration](#configuration)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
-
-```
 ## Prerequisites
 
 - **Revit 2023 or Civil 3D**
@@ -39,14 +26,14 @@ Explore the possibilities with GPT4All and elevate your Autodesk experience to n
 Use the following link -  for a detail guide on how to install custom python modules https://github.com/DynamoDS/Dynamo/wiki/Customizing-Dynamo's-Python-3-installation
 
 1. **Download the `Getpip.py` file** from here -https://pip.pypa.io/en/stable/installation/#get-pip-py
-2. **Place the file** in the specified Dynamo's Python home.
+2. **Place the file** in the specified Dynamo's cPython home. eg C:\Users\%USERNAME%\AppData\Local\python-3.9.12-embed-amd64\
 3. **Run the file** to install pip.
 
 ### 3. Install GPT4All Module and Custom Modules
 
-1. **Run the Dynamo script** to install required custom modules - PY - InstallCustomPythonModules.dyn
-2. open python. Exe from the Dynamo Python home folder this will open the python ide 
-3. **Install the GPT4All module**  inside the ide install GPT4All modules using pip:`pip install gpt4all`
+1. **Run the Dynamo script** to install required custom modules - PY - InstallCustomPythonModules.dyn https://github.com/kneelster111/Gpt4all-Autodesk-Dynamo-Python/blob/main/PY%20-%20InstallCustomPythonModules.dyn
+2. open python. Exe from the Dynamo Python home folder this will open the python idle 
+3. **Install the GPT4All module**  inside the idle install GPT4All modules using pip:`pip install gpt4all`
 
 ### 5. Download Model Files and Use GPT4All in Python
 
