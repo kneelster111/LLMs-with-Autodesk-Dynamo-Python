@@ -57,7 +57,7 @@ with model.chat_session():
 ## Usage
   1. Simpler Dynamo Player Chat Bot.
 
-  2. Chat bot with WinForms UI
+  2. Chat bot with WinForms UI with Conversation History
 
   3. Chat bot With Read Dat and CodeAgent. 
 
