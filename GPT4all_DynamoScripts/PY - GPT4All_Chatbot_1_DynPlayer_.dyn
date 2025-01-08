@@ -1,0 +1,236 @@
+{
+  "Uuid": "34954235-0d7d-4490-9d78-51cc7f815761",
+  "IsCustomNode": false,
+  "Description": "",
+  "Name": "PY - GPT4All_Chatbot_1_DynPlayer_",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [
+    {
+      "Id": "b30a7b168c8443f7abe725a7748789c9",
+      "Name": "Chat Prompt",
+      "Type": "string",
+      "Type2": "string",
+      "Value": "Give me a brief introduction , of using Gpt4 all ,with Revit and Dynamo.",
+      "Description": "Creates a string.",
+      "SelectedIndex": 0
+    }
+  ],
+  "Outputs": [
+    {
+      "Id": "e911a6c82a194652a1ac5395d86f8fb4",
+      "Name": "Output",
+      "Type": "unknown",
+      "InitialValue": "",
+      "Description": "Visualize the node's output"
+    }
+  ],
+  "Nodes": [
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\nimport os\r\nlocalapp = os.getenv(r'LOCALAPPDATA')\r\n\r\nsys.path.append(os.path.join(localapp, r'python-3.9.12-embed-amd64\\Lib\\site-packages'))\r\n\r\nimport gpt4all \r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\nchatinput = IN[0]\r\n\r\n# Place your code below this line\r\nfrom gpt4all import GPT4All\r\nmodel = GPT4All(\"Meta-Llama-3-8B-Instruct.Q4_0.gguf\") # downloads / loads a 4.66GB LLM\r\nwith model.chat_session():\r\n    result = model.generate(chatinput, max_tokens=1024)\r\n    #print(model.generate(chatinput, max_tokens=1024))\r\n# Assign your output to the OUT variable.\r\nOUT = result",
+      "Engine": "CPython3",
+      "EngineName": "CPython3",
+      "VariableInputPorts": true,
+      "Id": "d0bd0e48bbfc4707a1130581d36d69ec",
+      "Inputs": [
+        {
+          "Id": "20a113f4490147ba87fbbc95c681d508",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "318f71ff20fb4b4d9dfb9ed71f15489e",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "e911a6c82a194652a1ac5395d86f8fb4",
+      "Inputs": [
+        {
+          "Id": "9604a5590f2b4f0a9c25ed50c320f516",
+          "Name": "",
+          "Description": "Node to show output from",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "a24087408f044fd1a98980c3dfd48785",
+          "Name": "",
+          "Description": "Node output",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Visualize the node's output"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "Give me a brief introduction , of using Gpt4 all ,with Revit and Dynamo.",
+      "Id": "b30a7b168c8443f7abe725a7748789c9",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "359ce9735d3046619c023652399de4ba",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a string."
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "318f71ff20fb4b4d9dfb9ed71f15489e",
+      "End": "9604a5590f2b4f0a9c25ed50c320f516",
+      "Id": "7027b617d40e475aa851282fea7231f0",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "359ce9735d3046619c023652399de4ba",
+      "End": "20a113f4490147ba87fbbc95c681d508",
+      "Id": "8fd30f1a37a54f8e8c7c05438258c7c1",
+      "IsHidden": "False"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Thumbnail": "",
+  "GraphDocumentationURL": null,
+  "ExtensionWorkspaceData": [
+    {
+      "ExtensionGuid": "28992e1d-abb9-417f-8b1b-05e053bee670",
+      "Name": "Properties",
+      "Version": "2.16",
+      "Data": {}
+    },
+    {
+      "ExtensionGuid": "DFBD9CC0-DB40-457A-939E-8C8555555A9D",
+      "Name": "Generative Design",
+      "Version": "3.0",
+      "Data": {}
+    }
+  ],
+  "Author": "",
+  "Linting": {
+    "activeLinter": "None",
+    "activeLinterId": "7b75fb44-43fd-4631-a878-29f4d5d8399a",
+    "warningCount": 0,
+    "errorCount": 0
+  },
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.16.4.10216",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "ConnectorPins": [],
+    "NodeViews": [
+      {
+        "Name": "Basic chatbot using gpt4all",
+        "ShowGeometry": true,
+        "Id": "d0bd0e48bbfc4707a1130581d36d69ec",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1139.1620716821481,
+        "Y": 470.10403543246275
+      },
+      {
+        "Name": "Output",
+        "ShowGeometry": true,
+        "Id": "e911a6c82a194652a1ac5395d86f8fb4",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": true,
+        "Excluded": false,
+        "X": 1446.5565286283982,
+        "Y": 489.99528446681177
+      },
+      {
+        "Name": "Chat Prompt",
+        "ShowGeometry": true,
+        "Id": "b30a7b168c8443f7abe725a7748789c9",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 803.0,
+        "Y": 442.0
+      }
+    ],
+    "Annotations": [
+      {
+        "Id": "a402072b6a5b4256bf1f64a34ddc1c02",
+        "Title": "Control Simple Chat bot use in Dynamo Player",
+        "DescriptionText": null,
+        "IsExpanded": true,
+        "WidthAdjustment": 0.0,
+        "HeightAdjustment": 0.0,
+        "Nodes": [
+          "d0bd0e48bbfc4707a1130581d36d69ec",
+          "e911a6c82a194652a1ac5395d86f8fb4",
+          "b30a7b168c8443f7abe725a7748789c9"
+        ],
+        "HasNestedGroups": false,
+        "Left": 793.0,
+        "Top": 383.0,
+        "Width": 940.55652862839815,
+        "Height": 255.0,
+        "FontSize": 24.0,
+        "InitialTop": 442.0,
+        "InitialHeight": 226.0,
+        "TextblockHeight": 49.0,
+        "Background": "#FF90EE90"
+      }
+    ],
+    "X": 0.0,
+    "Y": 0.0,
+    "Zoom": 1.0
+  }
+}
