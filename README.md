@@ -56,10 +56,12 @@ with model.chat_session():
 
 ## ## Examples Uses
 
-How to use and Where to find Revit Commands 
+How to Guides and Where to find Revit Commands 
 
 Create a Wall/ Element
+
 Move an Element
+
 Create Dynamo Geometry
 
 ## Future Implementations and Ideas
