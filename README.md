@@ -3,10 +3,12 @@
 
 Discover a new level of efficiency and innovation with our latest workflow that seamlessly integrates (Large Language Models) LLMs, Using GPT4ALL, and HuggingFace -a free and open-source AI python libraries and model- with Autodesk products. Our approach leverages the power of Python to bring advanced AI capabilities to your favorite design and engineering tools.
 
-In our initial release, we've focused on Dynamo for Autodesk Revit, enabling users to harness the potential of AI-driven automation and intelligence within their Revit projects. With GPT4All running on your local machine, you can experience smarter workflows, faster decision-making, and enhanced project outcomes—all while ensuring your data stays secure as the model is saved directly to your system.
+In our initial release, we've focused on Dynamo for Autodesk Revit, enabling users to harness the potential of AI-driven automation and intelligence within their Revit projects. 
+With GPT4All running on your local machine, you can experience smarter workflows, faster decision-making, and enhanced project outcomes—all while ensuring your data stays secure as the model is saved directly to your system.
 
-Explore the possibilities with LLMs and elevate your Autodesk experience to new heights. Visit Nomic AI to learn more.
+In our second attempt, we explored HuggingFace libraries. These can also be set up to run locally [Link](https://discuss.huggingface.co/t/using-huggingface-on-no-free-internet-access-server/11202/2). or calling out to the online model by Signing up to Huggingface.co ,and using [User Access Token](https://huggingface.co/docs/hub/en/security-tokens)  
 
+Explore the possibilities with LLMs and elevate your Autodesk experience to new heights. 
 
 ## Prerequisites
 
@@ -14,6 +16,7 @@ Explore the possibilities with LLMs and elevate your Autodesk experience to new 
 - **Dynamo 2+**
 - **GPT4All -** https://github.com/nomic-ai/gpt4all
 - **Huggingface** - (optional) https://huggingface.co/
+- **Smolagents** - (optional) [https://github.com/huggingface/smolagents](https://github.com/huggingface/smolagents)
   
 ## Installation
 
@@ -58,7 +61,7 @@ with model.chat_session():
 1. Download the file using the link below, 
 
 ## Usage
-  1. Simple Dynamo Player Chat Bot. - https://github.com/kneelster111/Gpt4all-Autodesk-Dynamo-Python/blob/main/GPT4all_DynamoScripts/PY%20-%20GPT4All_Chatbot_1_DynPlayer_.dyn
+  1. Simple Dynamo Player Chat Bot. - [GPT4All_Chatbot_1_DynPlayer](https://github.com/kneelster111/Gpt4all-Autodesk-Dynamo-Python/blob/main/GPT4all_DynamoScripts/PY%20-%20GPT4All_Chatbot_1_DynPlayer_.dyn)
 
   2. Chat bot; with WinForms UI with Conversation History -
 
@@ -78,10 +81,10 @@ Create Dynamo Geometry
 
 ## Future Implementations and Ideas
 
-Custom LocalDocs, Embeddings, and Fine-Tuning Model Data: Implementing custom local documents and embeddings using Nomic.aito enhance data integration and accessibility, while continuously refining and fine-tuning model data to improve accuracy and performance.
-PyRevit Integration: Extending our capabilities by integrating PyRevit, offering seamless automation and customization within Revit.
-Additional Dynamo Script Features: Expanding the functionality of Dynamo scripts with new features and improvements to streamline workflows.
-User Feedback & Adaptive Learning: Leveraging user feedback to drive adaptive learning and ensure our system evolves based on real-world use.
+1. Custom LocalDocs, Embeddings, and Fine-Tuning Model Data: Implementing custom local documents and embeddings using Nomic.aito enhance data integration and accessibility, while continuously refining and fine-tuning model data to improve accuracy and performance.
+2. PyRevit Integration: Extending our capabilities by integrating PyRevit, offering seamless automation and customization within Revit.
+3. Additional Dynamo Script Features: Expanding the functionality of Dynamo scripts with new features and improvements to streamline workflows.
+4. User Feedback & Adaptive Learning: Leveraging user feedback to drive adaptive learning and ensure our system evolves based on real-world use.
 
 ## Contributing
 
