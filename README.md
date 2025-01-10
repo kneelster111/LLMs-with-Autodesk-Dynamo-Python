@@ -64,7 +64,7 @@ with model.chat_session():
   1. Simple Dynamo Player Chat Bot. - [GPT4All_Chatbot_1_DynPlayer](https://github.com/kneelster111/Gpt4all-Autodesk-Dynamo-Python/blob/main/GPT4all_DynamoScripts/PY%20-%20GPT4All_Chatbot_1_DynPlayer_.dyn)
   2. Chat bot; with WinForms UI with Conversation History - Sample Image 
   3. Chat bot; CodeAgent With Read and write data - Sample Image 
-  4. Chat bot; MVVM with WPF UI for CodeAgent - WIP
+  4. Chat bot; MVVM with WPF UI for CodeAgent - [WIP](https://github.com/kneelster111/Gpt4all-Autodesk-Dynamo-Python/discussions/2#discussion-7806619)
 
 
 ## ## Examples Uses
