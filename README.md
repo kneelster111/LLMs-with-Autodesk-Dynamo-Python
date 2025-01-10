@@ -1,11 +1,11 @@
 # Gpt4all-Autodesk-Dynamo-Python
 ## Description
 
-Discover a new level of efficiency and innovation with our latest workflow that seamlessly integrates GPT4All, a free and open-source AI chatbot and model, with Autodesk products. Our groundbreaking approach leverages the power of Python to bring advanced AI capabilities to your favorite design and engineering tools.
+Discover a new level of efficiency and innovation with our latest workflow that seamlessly integrates (Large Language Models) LLMs, Using GPT4ALL, and HuggingFace -a free and open-source AI python libraries and model- with Autodesk products. Our approach leverages the power of Python to bring advanced AI capabilities to your favorite design and engineering tools.
 
 In our initial release, we've focused on Dynamo for Autodesk Revit, enabling users to harness the potential of AI-driven automation and intelligence within their Revit projects. With GPT4All running on your local machine, you can experience smarter workflows, faster decision-making, and enhanced project outcomes—all while ensuring your data stays secure as the model is saved directly to your system.
 
-Explore the possibilities with GPT4All and elevate your Autodesk experience to new heights. Visit Nomic AI to learn more.
+Explore the possibilities with LLMs and elevate your Autodesk experience to new heights. Visit Nomic AI to learn more.
 
 
 ## Prerequisites
@@ -13,6 +13,7 @@ Explore the possibilities with GPT4All and elevate your Autodesk experience to n
 - **Revit 2023 or Civil 3D**
 - **Dynamo 2+**
 - **GPT4All -** https://github.com/nomic-ai/gpt4all
+- **Huggingface** - (optional) https://huggingface.co/
   
 ## Installation
 
@@ -33,7 +34,9 @@ Use the following link -  for a detail guide on how to install custom python mod
 
 1. **Run the Dynamo script** to install required custom modules - PY - InstallCustomPythonModules.dyn https://github.com/kneelster111/Gpt4all-Autodesk-Dynamo-Python/blob/main/PY%20-%20InstallCustomPythonModules.dyn
 2. open python. Exe from the Dynamo Python home folder this will open the python idle 
-3. **Install the GPT4All module**  inside the idle install GPT4All modules using pip:`pip install gpt4all`
+3. **Install the GPT4All Library**  inside the idle install GPT4All modules using pip:`pip install gpt4all`
+4. **Install the HuggingFace Library**  inside the idle install GPT4All modules using pip:`pip install huggingface` (optional)
+5. **Install the smolagents Library**  inside the idle install GPT4All modules using pip:`pip install smolagents`(optional)
 
 ### 5. Download Model Files and Use GPT4All in Python
 
