@@ -14,6 +14,7 @@ Explore the possibilities with LLMs and elevate your Autodesk experience to new 
 
 - **Revit 2023 or Civil 3D**
 - **Dynamo 2+**
+- **Cpython** - Script uses Cpython , will look to provide code in Ironpython 2.7 (if possible), and the new [Pythonnet3 ](https://dynamobim.org/pythonnet3-a-new-dynamo-python-to-fix-everything/)
 - **GPT4All -** https://github.com/nomic-ai/gpt4all
 - **Huggingface** - (optional) https://huggingface.co/
 - **Smolagents** - (optional) [https://github.com/huggingface/smolagents](https://github.com/huggingface/smolagents)
@@ -56,16 +57,14 @@ with model.chat_session():
     print(model.generate("How can I run LLMs efficiently on my laptop?", max_tokens=1024))`
 ```
 
-### 6. GPT4ALL Assistant Dynamo File
+### 6. GPT4ALL Assistant Dynamo Files
 
-1. Download the file using the link below, 
-
-## Usage
+1. Download the Sample files to test using the links below-  
+## Sample Scripts
   1. Simple Dynamo Player Chat Bot. - [GPT4All_Chatbot_1_DynPlayer](https://github.com/kneelster111/Gpt4all-Autodesk-Dynamo-Python/blob/main/GPT4all_DynamoScripts/PY%20-%20GPT4All_Chatbot_1_DynPlayer_.dyn)
   2. Chat bot; with WinForms UI with Conversation History - [Sample Image ](https://github.com/kneelster111/Gpt4all-Autodesk-Dynamo-Python/blob/main/Images/ChaBot_UI_Simple1.png)
   3. Chat bot; CodeAgent With Read and write data - [Sample Image ](https://github.com/kneelster111/Gpt4all-Autodesk-Dynamo-Python/blob/main/Images/ChaBot_UI_Winforms_Complex1.png)
   4. Chat bot; MVVM with WPF UI for CodeAgent - [WIP](https://github.com/kneelster111/Gpt4all-Autodesk-Dynamo-Python/discussions/2#discussion-7806619)
-
 
 ## ## Examples Uses
 
