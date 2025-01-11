@@ -97,9 +97,10 @@ This video shows the app in action, using huggingface, including basic usage and
 ## Future Implementations and Ideas
 
 1. Custom LocalDocs, Embeddings, and Fine-Tuning Model Data: Implementing custom local documents and embeddings using Nomic.aito enhance data integration and accessibility, while continuously refining and fine-tuning model data to improve accuracy and performance.
-2. PyRevit Integration: Extending our capabilities by integrating PyRevit, offering seamless automation and customization within Revit.
-3. Additional Dynamo Script Features: Expanding the functionality of Dynamo scripts with new features and improvements to streamline workflows.
-4. User Feedback & Adaptive Learning: Leveraging user feedback to drive adaptive learning and ensure our system evolves based on real-world use.
+2. PyRevit Integration: Extending our capabilities by integrating PyRevit, offering seamless automation and customization within Revit. [pyRevit Hacker](https://www.youtube.com/watch?v=zYJ1SA_Rpq0)
+
+5. Additional Dynamo Script Features: Expanding the functionality of Dynamo scripts with new features and improvements to streamline workflows.
+6. User Feedback & Adaptive Learning: Leveraging user feedback to drive adaptive learning and ensure our system evolves based on real-world use.
 
 ## Contributing
 
