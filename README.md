@@ -114,7 +114,7 @@ We appreciate your efforts and look forward to your contributions! Let's make th
 ## Disclaimer and License
 
 ### License
-This project is licensed under the Creative Commons Attribution-NonCommercial (CC BY-NC) license, allowing modification and redistribution for non-commercial purposes only, with attribution to the original author. The code is experimental and provided "as is" with no warranty. Use at your own risk. More info.
+This project is licensed under the Creative Commons Attribution-NonCommercial (CC BY-NC) license, allowing modification and redistribution for non-commercial purposes only, with attribution to the original author.
 
 ### Disclaimer
 This code is experimental and may not be suitable for production environments. The author provides no guarantees regarding its reliability or performance. By using this code, you acknowledge and accept the risks involved, and you are solely responsible for any issues that arise from its use. The code is provided "as is" without any warranty, either express or implied.
