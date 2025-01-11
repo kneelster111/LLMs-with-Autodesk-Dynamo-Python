@@ -81,8 +81,8 @@ with model.chat_session():
 ## Sample Use
 
 ### Demo Video
-
 Below is a demonstration of how to use the app:
+
 [![Watch the video](https://img.youtube.com/vi/GRdxeCw3Ovg/0.jpg)](https://youtu.be/GRdxeCw3Ovg)
 
 This video shows the app in action, using huggingface, including basic usage and features.
