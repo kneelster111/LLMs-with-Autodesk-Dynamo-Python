@@ -9,7 +9,7 @@ Discover a new level of efficiency and innovation with our latest workflow that 
 In our initial release, we've focused on Dynamo for Autodesk Revit, enabling users to harness the potential of AI-driven automation and intelligence within their Revit projects. 
 With GPT4All running on your local machine, you can experience smarter workflows, faster decision-making, and enhanced project outcomes—all while ensuring your data stays secure as the model is saved directly to your system.
 
-In our second attempt, we explored HuggingFace libraries. These can also be set up to run locally [Link](https://discuss.huggingface.co/t/using-huggingface-on-no-free-internet-access-server/11202/2). or calling out to the online model by Signing up to [Huggingface.co](https://huggingface.co/join) ,and using [User Access Token](https://huggingface.co/docs/hub/en/security-tokens)  
+In our second attempt, we explored HuggingFace libraries. These can also be set up to run locally [Link](https://discuss.huggingface.co/t/using-huggingface-on-no-free-internet-access-server/11202/2). or HTTP request out to the online model by Signing up to [Huggingface.co](https://huggingface.co/join) ,and using [User Access Token](https://huggingface.co/docs/hub/en/security-tokens)  
 
 Explore the possibilities with LLMs and elevate your Autodesk experience to new heights. 
 
