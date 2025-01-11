@@ -59,7 +59,7 @@ with model.chat_session():
 4.  **HuggingFace LOGIN** - Optionally if u awnt o  test the huggingface script , u will need o first log in to uyour huggingface account and provide the access token in the python.exe.
 ```
 from huggingface import login
-login("token")
+login("insert user token")
 model = GPT4All("Meta-Llama-3-8B-Instruct.Q4_0.gguf")  # downloads / loads a 4.66GB LLM
 with model.chat_session():
     print(model.generate("How can I run LLMs efficiently on my laptop?", max_tokens=1024))`
