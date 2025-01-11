@@ -73,18 +73,17 @@ with model.chat_session():
 
 1. Download the Sample files to test using the links below-  
 ## Sample Scripts
-  1. Simple Dynamo Player Chat Bot. - [GPT4All_Chatbot_1_DynPlayer](https://github.com/kneelster111/Gpt4all-Autodesk-Dynamo-Python/blob/main/GPT4all_DynamoScripts/PY%20-%20GPT4All_Chatbot_1_DynPlayer_.dyn)
-  2. Chat bot; with WinForms UI with Conversation History - [Sample Image ](https://github.com/kneelster111/Gpt4all-Autodesk-Dynamo-Python/blob/main/Images/ChaBot_UI_Simple1.png)
-  3. Chat bot; CodeAgent With Read and write data - [Sample Image ](https://github.com/kneelster111/Gpt4all-Autodesk-Dynamo-Python/blob/main/Images/ChaBot_UI_Winforms_Complex1.png)
-  4. Chat bot; MVVM with WPF UI for CodeAgent - [WIP](https://github.com/kneelster111/Gpt4all-Autodesk-Dynamo-Python/discussions/2#discussion-7806619)
+  1. GPT4ALL Simple Dynamo Player Chat Bot.  - [GPT4All_Chatbot_1_DynPlayer](https://github.com/kneelster111/Gpt4all-Autodesk-Dynamo-Python/blob/main/GPT4all_DynamoScripts/PY%20-%20GPT4All_Chatbot_1_DynPlayer_.dyn)
+  2. Chat bot; GPT4ALL with WinForms UI with Conversation History - [Sample Image ](https://github.com/kneelster111/Gpt4all-Autodesk-Dynamo-Python/blob/main/Images/ChaBot_UI_Simple1.png)
+  3. Chat bot; GPT4ALL CodeAgent With Read and write data - [Sample Image ](https://github.com/kneelster111/Gpt4all-Autodesk-Dynamo-Python/blob/main/Images/ChaBot_UI_Winforms_Complex1.png)
+  4. Chat bot; HuggingFace CodeAgent With Read and write data - [Sample Image ](https://github.com/kneelster111/Gpt4all-Autodesk-Dynamo-Python/blob/main/Images/ChaBot_UI_Winforms_Complex1.png)
+  5. Chat bot; MVVM with WPF UI for CodeAgent - [WIP](https://github.com/kneelster111/Gpt4all-Autodesk-Dynamo-Python/discussions/2#discussion-7806619)
 
 ## Sample Use
 
 ### Demo Video
 Below is a demonstration of how to use the app:
-
 [![Watch the video](https://img.youtube.com/vi/GRdxeCw3Ovg/0.jpg)](https://youtu.be/GRdxeCw3Ovg)
-
 This video shows the app in action, using huggingface, including basic usage and features.
 
 ### Examples of Use Cases
