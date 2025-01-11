@@ -111,7 +111,7 @@ When contributing, please adhere to the following guidelines:
 
 We appreciate your efforts and look forward to your contributions! Let's make this project even better together.
 
-##Disclaimer and License
+## Disclaimer and License
 
 ### License
 This project is licensed under the Creative Commons Attribution-NonCommercial (CC BY-NC) license, allowing modification and redistribution for non-commercial purposes only, with attribution to the original author. The code is experimental and provided "as is" with no warranty. Use at your own risk. More info.
