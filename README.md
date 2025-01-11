@@ -37,7 +37,7 @@ Use the following link -  for a detail guide on how to install custom python mod
 ### 3. Install GPT4All Module and Custom Modules
 
 1. **Run the Dynamo script** to install required custom modules - [PY - InstallCustomPythonModules.dyn ](https://github.com/kneelster111/Gpt4all-Autodesk-Dynamo-Python/blob/main/PY%20-%20InstallCustomPythonModules.dyn)
-2. open python. Exe from the Dynamo Python home folder this will open the python idle 
+2. **open python.Exe** from the Dynamo Python home folder this will open the python idle 
 3. **Install the GPT4All Library**  inside the idle install GPT4All modules using pip:`pip install gpt4all`
 4. **Install the HuggingFace Library**  inside the idle install GPT4All modules using pip:`pip install huggingface` (optional)
 5. **Install the smolagents Library**  inside the idle install GPT4All modules using pip:`pip install smolagents`(optional)
