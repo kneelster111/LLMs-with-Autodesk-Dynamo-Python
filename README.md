@@ -83,7 +83,7 @@ with model.chat_session():
 ### Demo GIF
 
 Below is a demonstration of how to use the app:
-<iframe width="560" height="315" src="https://www.youtube.com/embed/your-video-id" frameborder="0" allowfullscreen></iframe>
+[![Watch the video](https://img.youtube.com/vi/GRdxeCw3Ovg/0.jpg)](https://youtu.be/GRdxeCw3Ovg)
 
 This video shows the app in action, using huggingface, including basic usage and features.
 
