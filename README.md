@@ -76,8 +76,9 @@ with model.chat_session():
   1. Chat bot; GPT4ALL Simple Dynamo Player .  - [GPT4All_Chatbot_1_DynPlayer](https://github.com/kneelster111/Gpt4all-Autodesk-Dynamo-Python/blob/main/GPT4all_DynamoScripts/PY%20-%20GPT4All_Chatbot_1_DynPlayer_.dyn)
   2. Chat bot; GPT4ALL with WinForms UI with Conversation History - [PY - GPT4All_Chatbot_2_UI_History.dyn](https://github.com/kneelster111/LLMs-with-Autodesk-Dynamo-Python/blob/main/GPT4all_DynamoScripts/PY%20-%20GPT4All_Chatbot_2_UI_History.dyn)
   3. Chat bot; GPT4ALL CodeAgent With Read and write data - [PY - GPT4All_Chatbot_3_UI_Agent.dyn](https://github.com/kneelster111/LLMs-with-Autodesk-Dynamo-Python/blob/main/GPT4all_DynamoScripts/PY%20-%20GPT4All_Chatbot_3_UI_Agent.dyn)
-  4. Chat bot; HuggingFace CodeAgent With Read and write data - [PY - HF_Chatbot_4_UI_Agent.dyn](https://github.com/kneelster111/LLMs-with-Autodesk-Dynamo-Python/blob/main/GPT4all_DynamoScripts/PY%20-%20HF_Chatbot_4_UI_Agent.dyn) [DynamoPY-huggingface_ui.py]([https://github.com/kneelster111/LLMs-with-Autodesk-Dynamo-Python/blob/main/GPT4all_DynamoScripts/PY%20-%20HF_Chatbot_4_UI_Agent.dyn](https://github.com/kneelster111/LLMs-with-Autodesk-Dynamo-Python/blob/main/GPT4all_DynamoScripts/DynamoPY-huggingface_ui.py)) 
-  5. Chat bot; MVVM with WPF UI for CodeAgent - [WIP](https://github.com/kneelster111/Gpt4all-Autodesk-Dynamo-Python/discussions/2#discussion-7806619)
+  4. Chat bot; HuggingFace CodeAgent With Read and write data - [PY - HF_Chatbot_4_UI_Agent.dyn](https://github.com/kneelster111/LLMs-with-Autodesk-Dynamo-Python/blob/main/GPT4all_DynamoScripts/PY%20-%20HF_Chatbot_4_UI_Agent.dyn)
+     [DynamoPY-huggingface_ui.py](https://github.com/kneelster111/LLMs-with-Autodesk-Dynamo-Python/blob/main/GPT4all_DynamoScripts/DynamoPY-huggingface_ui.py) 
+  6. Chat bot; MVVM with WPF UI for CodeAgent - [WIP](https://github.com/kneelster111/Gpt4all-Autodesk-Dynamo-Python/discussions/2#discussion-7806619)
 
 ## Sample Use
 
