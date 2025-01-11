@@ -2,24 +2,14 @@
   "Uuid": "34954235-0d7d-4490-9d78-51cc7f815761",
   "IsCustomNode": false,
   "Description": "Chat bot using GPT4ALL LLM Python Library",
-  "Name": "PY - GPT4All_Chatbot_1_DynPlayer_",
+  "Name": "PY - GPT4All_Chatbot_2_UI_History",
   "ElementResolver": {
     "ResolutionMap": {}
   },
-  "Inputs": [
-    {
-      "Id": "b30a7b168c8443f7abe725a7748789c9",
-      "Name": "Chat Prompt",
-      "Type": "string",
-      "Type2": "string",
-      "Value": "Give me a brief introduction , of using Gpt4 all ,with Revit and Dynamo.",
-      "Description": "Creates a string.",
-      "SelectedIndex": 0
-    }
-  ],
+  "Inputs": [],
   "Outputs": [
     {
-      "Id": "e911a6c82a194652a1ac5395d86f8fb4",
+      "Id": "cc088146e091427eb140fed5b5001abd",
       "Name": "Output",
       "Type": "unknown",
       "InitialValue": "",
@@ -30,16 +20,25 @@
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\nimport os\r\nlocalapp = os.getenv(r'LOCALAPPDATA')\r\n\r\nsys.path.append(os.path.join(localapp, r'python-3.9.12-embed-amd64\\Lib\\site-packages'))\r\n\r\nimport gpt4all \r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\nchatinput = IN[0]\r\n\r\n# Place your code below this line\r\nfrom gpt4all import GPT4All\r\nmodel = GPT4All(\"Meta-Llama-3-8B-Instruct.Q4_0.gguf\") # downloads / loads a 4.66GB LLM\r\nwith model.chat_session():\r\n    result = model.generate(chatinput, max_tokens=1024)\r\n    #print(model.generate(chatinput, max_tokens=1024))\r\n# Assign your output to the OUT variable.\r\nOUT = result",
+      "Code": "\"\"\"\r\nAuthor: Neel Shah\r\nEmail: neel.shah.gbim@gmail.com\r\nGitHub: https://github.com/kneelster111/LLMs-with-Autodesk-Dynamo-Python\r\n\r\nThis project is licensed under the Creative Commons Attribution-Noncommercial (CC BY-NC) license, allowing modification and redistribution for non-commercial purposes only, with attribution to the original author. The code is experimental and provided \"as is\" with no warranty. Use at your own risk.\r\n\"\"\"\r\n\r\n# Import necessary Dynamo and Revit modules\r\nimport clr\r\nclr.AddReference('RevitServices')\r\nfrom RevitServices.Persistence import DocumentManager\r\nfrom RevitServices.Transactions import TransactionManager\r\n\r\nimport sys\r\nimport os\r\n\r\nlocalapp = os.getenv(r'LOCALAPPDATA')\r\n\r\nsys.path.append(os.path.join(localapp, r'python-3.9.12-embed-amd64\\Lib\\site-packages'))\r\n\r\nimport System\r\nimport System.Drawing\r\nimport System.Windows.Forms\r\nimport time\r\n\r\nimport gpt4all\r\nfrom gpt4all import GPT4All\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\n#resfresh, revitdata, modelname, system_prompt = IN\r\n# Signal the refresh input from Dynamo\r\nrefresh = IN[0]\r\n\r\nsystemprompt=IN[1]\r\n\r\n\r\n# Initialize client for the selected model\r\nmodel = GPT4All(\"Meta-Llama-3-8B-Instruct.Q4_0.gguf\")  # Loads the model\r\n\r\nclass ChatForm(System.Windows.Forms.Form):\r\n    def __init__(self):\r\n        self.start_time = time.time()\r\n        self.conversation_history = []  # Initialize conversation history\r\n        self.InitializeComponent()\r\n        self.code_executed_correctly = False\r\n\r\n    def InitializeComponent(self):\r\n        self.Text = \"Dynamo AI Chat App\"\r\n        self.Size = System.Drawing.Size(600, 900)\r\n        self.toolTip = System.Windows.Forms.ToolTip()\r\n        self.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen\r\n        self.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable\r\n        self.MaximizeBox = True\r\n        self.MinimizeBox = True\r\n\r\n        # Chat history window\r\n        self.chatHistory = System.Windows.Forms.RichTextBox()\r\n        self.chatHistory.Location = System.Drawing.Point(10, 10)\r\n        self.chatHistory.Size = System.Drawing.Size(570, 400)\r\n        self.chatHistory.ReadOnly = True\r\n        self.chatHistory.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D\r\n\r\n        # Chat input window\r\n        self.chatInput = System.Windows.Forms.RichTextBox()\r\n        self.chatInput.Multiline = True\r\n        self.chatInput.Location = System.Drawing.Point(10, 420)\r\n        self.chatInput.Size = System.Drawing.Size(570, 100)\r\n        self.chatInput.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D\r\n        self.chatInput.KeyDown += self.ChatInputKeyDown\r\n\r\n        # Send button\r\n        self.sendButton = System.Windows.Forms.Button()\r\n        self.sendButton.Text = \"Send\"\r\n        self.sendButton.Size = System.Drawing.Size(110, 25)\r\n        self.sendButton.Click += self.SendButtonClick\r\n        # Tooltip for chat input\r\n        self.toolTip.SetToolTip(self.chatInput, \"Type your message here. Press Ctrl + Enter to send.\")\r\n\r\n\r\n        # Save button\r\n        self.saveButton = System.Windows.Forms.Button()\r\n        self.saveButton.Text = \"Save\"\r\n        self.saveButton.Size = System.Drawing.Size(110, 25)\r\n        self.saveButton.Click += self.SaveButtonClick\r\n        # Tooltip for save button\r\n        self.toolTip.SetToolTip(self.saveButton, \"This will save the chat history as a txt file.\")\r\n\r\n\r\n        # Time taken label\r\n        self.timeLabel = System.Windows.Forms.Label()\r\n        self.timeLabel.Size = System.Drawing.Size(130, 25)\r\n\r\n        # FlowLayoutPanel for buttons at the bottom\r\n        self.bottomPanel = System.Windows.Forms.FlowLayoutPanel()\r\n        self.bottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom\r\n        self.bottomPanel.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight\r\n        self.bottomPanel.WrapContents = False\r\n        self.bottomPanel.AutoSize = True\r\n        self.bottomPanel.Padding = System.Windows.Forms.Padding(10)\r\n\r\n        # Add the controls for sending messages and running the code agent into the bottom panel\r\n        self.bottomPanel.Controls.Add(self.sendButton)\r\n        self.bottomPanel.Controls.Add(self.saveButton)\r\n\r\n\r\n        # Adding all the main UI components\r\n        self.Controls.Add(self.chatHistory)\r\n        self.Controls.Add(self.chatInput)\r\n        self.Controls.Add(self.bottomPanel)  # This contains all the buttons now\r\n        self.Controls.Add(self.timeLabel)\r\n\r\n\r\n        # Style enhancements (basic)\r\n        self.BackColor = System.Drawing.Color.White\r\n        self.chatHistory.BackColor = System.Drawing.Color.WhiteSmoke\r\n        self.chatInput.BackColor = System.Drawing.Color.WhiteSmoke\r\n        self.sendButton.BackColor = System.Drawing.Color.LightGray\r\n        self.sendButton.ForeColor = System.Drawing.Color.Black\r\n        \r\n        # Define the system prompt\r\n        self.system_prompt = systemprompt\r\n\r\n        # Add the system prompt to the conversation history and chat history\r\n        self.chatHistory.AppendText(self.system_prompt + \"\\n\")\r\n        self.conversation_history.append(self.system_prompt)\r\n        # Set the chatInput as the default focus\r\n        self.chatInput.Focus()\r\n\r\n        # Handle resize event\r\n        self.Resize += self.OnResize\r\n\r\n    def OnResize(self, sender, EventArgs):\r\n        self.chatHistory.Size = System.Drawing.Size(self.ClientSize.Width - 20, self.ClientSize.Height - 200)\r\n        self.chatInput.Location = System.Drawing.Point(10, self.ClientSize.Height - 170)\r\n        self.chatInput.Size = System.Drawing.Size(self.ClientSize.Width - 20, 100)\r\n        self.bottomPanel.Location = System.Drawing.Point(10, self.ClientSize.Height - 80)\r\n        self.timeLabel.Location = System.Drawing.Point(self.ClientSize.Width - 150, self.ClientSize.Height - 60)\r\n        \r\n    def ChatInputKeyDown(self, sender, event):\r\n        if event.Control and event.KeyCode == System.Windows.Forms.Keys.Enter:\r\n            self.SendButtonClick(sender, event)\r\n\r\n    def SendButtonClick(self, sender, EventArgs):\r\n        message = self.chatInput.Text\r\n        if message:\r\n            elapsed_time = time.time() - self.start_time\r\n            minutes, seconds = divmod(elapsed_time, 60)\r\n            time_taken_str = f\"Time taken: {int(minutes)}m {int(seconds)}s\"\r\n            self.timeLabel.Text = time_taken_str\r\n            \r\n            try:\r\n                int_value = int(self.intInput.Text)\r\n                if not (1 <= int_value <= 20):\r\n                    int_value = 5\r\n            except ValueError:\r\n                int_value = 5\r\n            \r\n            # Append user message to chat history\r\n            self.chatHistory.AppendText(f\"User: {message}\\n\")\r\n            self.conversation_history.append(f\"User: {message}\")\r\n            \r\n            # Pass the conversation history to the model\r\n            history = \"\\n\".join(self.conversation_history)\r\n            \r\n            # Load and use the model\r\n            #messages = [{\"role\": \"user\", \"content\": history}]\r\n            #response = client.chat_completion(messages, max_tokens=1000)\r\n            result = model.generate(history, max_tokens=1024)\r\n            \r\n            # Extract and format the response\r\n            #if 'choices' in response:\r\n                #result = response['choices'][0]['message']['content']\r\n            #else:\r\n                #result = \"Sorry, I couldn't get a response.\"\r\n\r\n            self.result = result\r\n            \r\n            # Append bot response to chat history\r\n            self.chatHistory.AppendText(f\"Bot: {result}\\n\")\r\n            self.conversation_history.append(f\"Bot: {result}\")  # Add bot response to history\r\n            \r\n            self.chatInput.Clear()\r\n            self.chatInput.Focus()\r\n\r\n\r\n    def SaveButtonClick(self, sender, EventArgs):\r\n        saveFileDialog = System.Windows.Forms.SaveFileDialog()\r\n        saveFileDialog.Filter = \"Text Files (*.txt)|*.txt|All Files (*.*)|*.*\"\r\n        \r\n        if saveFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK:\r\n            with open(saveFileDialog.FileName, 'w') as file:\r\n                file.write(self.chatHistory.Text)\r\n\r\n\r\n\r\n    \r\n\r\ndef run():\r\n    app = ChatForm()\r\n    application = System.Windows.Forms.Application\r\n    application.Run(app)\r\n\r\nrun()\r\nOUT=0\r\n\r\n\r\n\r\n",
       "Engine": "CPython3",
       "EngineName": "CPython3",
       "VariableInputPorts": true,
-      "Id": "d0bd0e48bbfc4707a1130581d36d69ec",
+      "Id": "8ef51f54e5b8433a909762286b70a16d",
       "Inputs": [
         {
-          "Id": "20a113f4490147ba87fbbc95c681d508",
+          "Id": "923fde1f884f4010a67e3d4629dd9fd0",
           "Name": "IN[0]",
           "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "332f3f0de3d34eb1818d71a7f1b2fe38",
+          "Name": "IN[1]",
+          "Description": "Input #1",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -48,7 +47,7 @@
       ],
       "Outputs": [
         {
-          "Id": "318f71ff20fb4b4d9dfb9ed71f15489e",
+          "Id": "8a6de94be65e45ba9f600e226e694a22",
           "Name": "OUT",
           "Description": "Result of the python script",
           "UsingDefaultValue": false,
@@ -63,10 +62,10 @@
     {
       "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
       "NodeType": "ExtensionNode",
-      "Id": "e911a6c82a194652a1ac5395d86f8fb4",
+      "Id": "cc088146e091427eb140fed5b5001abd",
       "Inputs": [
         {
-          "Id": "9604a5590f2b4f0a9c25ed50c320f516",
+          "Id": "7afa2068d4b543c6a796638777cea453",
           "Name": "",
           "Description": "Node to show output from",
           "UsingDefaultValue": false,
@@ -77,7 +76,7 @@
       ],
       "Outputs": [
         {
-          "Id": "a24087408f044fd1a98980c3dfd48785",
+          "Id": "1188e962ccec4a6faafe99fe03709332",
           "Name": "",
           "Description": "Node output",
           "UsingDefaultValue": false,
@@ -90,16 +89,16 @@
       "Description": "Visualize the node's output"
     },
     {
-      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
-      "NodeType": "StringInputNode",
-      "InputValue": "Give me a brief introduction , of using Gpt4 all ,with Revit and Dynamo.",
-      "Id": "b30a7b168c8443f7abe725a7748789c9",
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "NodeType": "BooleanInputNode",
+      "InputValue": true,
+      "Id": "5b8fa00a2b0b427fa73860b26f30903f",
       "Inputs": [],
       "Outputs": [
         {
-          "Id": "359ce9735d3046619c023652399de4ba",
+          "Id": "a7aee904b3cb4756b33af124405d173c",
           "Name": "",
-          "Description": "String",
+          "Description": "Boolean",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -107,20 +106,49 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Creates a string."
+      "Description": "Selection between a true and false."
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# The inputs to this node will be stored as a list in the IN variables.\r\n\r\n\r\n# Place your code below this line\r\nsystemprompt = \"\"\"\r\n\r\nSystem Prompt: You are an expert Revit assistant with deep knowledge of Revit 2023+ and its interface. Your role is to assist users in learning, understanding, and navigating Revit, answering questions related to tools, commands, features, and best practices.\r\n\r\nWhen a user asks for help:\r\n1. Provide clear, concise, and actionable solutions.\r\n2. Offer step-by-step instructions if needed for specific tasks.\r\n3. Be patient and friendly, guiding the user through the process.\r\n4. Always ensure to explain the interface and commands in a way that a beginner or intermediate user can understand.\r\n\r\nYour responses should aim to empower the user to solve their problems and learn how to navigate Revit more efficiently.\r\n\r\nKey focus areas include:\r\n- Understanding the Revit user interface (UI)\r\n- Navigating the Ribbon, Properties Palette, and Project Browser\r\n- Using essential Revit tools (e.g., creating walls, floors, and elements)\r\n- Troubleshooting common issues\r\n- Explaining workflows, project management, and family creation\r\n- Offering best practices for modeling, documentation, and collaboration in Revit\r\n\r\nBe sure to suggest keyboard shortcuts or tips to improve productivity whenever applicable.\r\n\r\n\"\"\"\r\n\r\n# Assign your output to the OUT variable.\r\nOUT = systemprompt",
+      "Engine": "CPython3",
+      "EngineName": "CPython3",
+      "VariableInputPorts": true,
+      "Id": "96c18a8ea00d42d28cbff59d5caadfac",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "600488b581f84fc79f87d2ad1195eb22",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
     }
   ],
   "Connectors": [
     {
-      "Start": "318f71ff20fb4b4d9dfb9ed71f15489e",
-      "End": "9604a5590f2b4f0a9c25ed50c320f516",
-      "Id": "7027b617d40e475aa851282fea7231f0",
+      "Start": "8a6de94be65e45ba9f600e226e694a22",
+      "End": "7afa2068d4b543c6a796638777cea453",
+      "Id": "7c97c67260f14c1f9c0cd503b89082c2",
       "IsHidden": "False"
     },
     {
-      "Start": "359ce9735d3046619c023652399de4ba",
-      "End": "20a113f4490147ba87fbbc95c681d508",
-      "Id": "8fd30f1a37a54f8e8c7c05438258c7c1",
+      "Start": "a7aee904b3cb4756b33af124405d173c",
+      "End": "923fde1f884f4010a67e3d4629dd9fd0",
+      "Id": "9c5787e21ea94e3090b92c4f2e077a88",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "600488b581f84fc79f87d2ad1195eb22",
+      "End": "332f3f0de3d34eb1818d71a7f1b2fe38",
+      "Id": "b9a76c19021c49f5a2c0a057ab489e84",
       "IsHidden": "False"
     }
   ],
@@ -142,7 +170,7 @@
       "Data": {}
     }
   ],
-  "Author": "https://www.linkedin.com/in/neelshah111/",
+  "Author": "neel.shah.gbim@gmail.com",
   "Linting": {
     "activeLinter": "None",
     "activeLinterId": "7b75fb44-43fd-4631-a878-29f4d5d8399a",
@@ -174,63 +202,74 @@
     "ConnectorPins": [],
     "NodeViews": [
       {
-        "Name": "Basic chatbot using gpt4all",
+        "Name": "*OkCheck* Chat bot with UI  - with History",
         "ShowGeometry": true,
-        "Id": "d0bd0e48bbfc4707a1130581d36d69ec",
+        "Id": "8ef51f54e5b8433a909762286b70a16d",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1139.1620716821481,
-        "Y": 470.10403543246275
+        "X": -813.067349408162,
+        "Y": 1262.1972581347834
       },
       {
         "Name": "Output",
         "ShowGeometry": true,
-        "Id": "e911a6c82a194652a1ac5395d86f8fb4",
+        "Id": "cc088146e091427eb140fed5b5001abd",
         "IsSetAsInput": false,
         "IsSetAsOutput": true,
         "Excluded": false,
-        "X": 1446.5565286283982,
-        "Y": 489.99528446681177
+        "X": -243.34633970873404,
+        "Y": 1256.0201701866633
       },
       {
-        "Name": "Chat Prompt",
+        "Name": "Boolean",
         "ShowGeometry": true,
-        "Id": "b30a7b168c8443f7abe725a7748789c9",
-        "IsSetAsInput": true,
+        "Id": "5b8fa00a2b0b427fa73860b26f30903f",
+        "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 803.0,
-        "Y": 442.0
+        "X": -1084.3463397087339,
+        "Y": 1256.0201701866633
+      },
+      {
+        "Name": "System Prompt",
+        "ShowGeometry": true,
+        "Id": "96c18a8ea00d42d28cbff59d5caadfac",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -1086.909507464839,
+        "Y": 1394.9901708139894
       }
     ],
     "Annotations": [
       {
-        "Id": "a402072b6a5b4256bf1f64a34ddc1c02",
-        "Title": "Control Simple Chat bot use in Dynamo Player",
+        "Id": "64a410ae0d1749b1b50de2c25582e5c4",
+        "Title": "Control - *OkCheck* Chat bot with UI  - with History",
         "DescriptionText": null,
         "IsExpanded": true,
         "WidthAdjustment": 0.0,
         "HeightAdjustment": 0.0,
         "Nodes": [
-          "d0bd0e48bbfc4707a1130581d36d69ec",
-          "e911a6c82a194652a1ac5395d86f8fb4",
-          "b30a7b168c8443f7abe725a7748789c9"
+          "8ef51f54e5b8433a909762286b70a16d",
+          "cc088146e091427eb140fed5b5001abd",
+          "5b8fa00a2b0b427fa73860b26f30903f",
+          "96c18a8ea00d42d28cbff59d5caadfac"
         ],
         "HasNestedGroups": false,
-        "Left": 793.0,
-        "Top": 383.0,
-        "Width": 940.55652862839815,
-        "Height": 255.0,
+        "Left": -1096.909507464839,
+        "Top": 1197.0201701866633,
+        "Width": 1140.563167756105,
+        "Height": 329.97000062732604,
         "FontSize": 24.0,
-        "InitialTop": 442.0,
-        "InitialHeight": 192.99528446681177,
+        "InitialTop": 1256.0201701866633,
+        "InitialHeight": 283.97000062732604,
         "TextblockHeight": 49.0,
         "Background": "#FF90EE90"
       }
     ],
-    "X": 0.0,
-    "Y": 0.0,
-    "Zoom": 1.0
+    "X": 1127.1264744119494,
+    "Y": -512.0651553897776,
+    "Zoom": 0.68159573365329063
   }
 }
