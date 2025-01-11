@@ -74,15 +74,22 @@ with model.chat_session():
   3. Chat bot; CodeAgent With Read and write data - [Sample Image ](https://github.com/kneelster111/Gpt4all-Autodesk-Dynamo-Python/blob/main/Images/ChaBot_UI_Winforms_Complex1.png)
   4. Chat bot; MVVM with WPF UI for CodeAgent - [WIP](https://github.com/kneelster111/Gpt4all-Autodesk-Dynamo-Python/discussions/2#discussion-7806619)
 
-## ## Examples Uses
+## Sample Use
 
-How to Guides and Where to find Revit Commands 
+### Demo GIF
 
-Create a Wall/ Element
+Below is a demonstration of how to use the app:
 
-Move an Element
+![App Usage](url-to-your-gif.gif)
 
-Create Dynamo Geometry
+This video shows the app in action, using huggingface, including basic usage and features.
+
+### Examples of Use Cases
+
+  1. How to Find Revit Commands
+  2. Create a Wall/Element
+  3. Move an Element
+  4. Create Dynamo Geometry
 
 ## Future Implementations and Ideas
 
@@ -95,8 +102,8 @@ Create Dynamo Geometry
 
 We welcome contributions, involvement, and discussion from the open-source community! Feel free to fork the repository, improve the code, and submit merge requests. We also encourage opening discussions on the Discussions tab.
 When contributing, please adhere to the following guidelines:
-  Follow the coding standards specified in our Coding Standards Guide.
-  Use clear and descriptive commit messages that follow our Commit Message Conventions.
+  Follow Common Coding standards, add relavant Comments.
+  Use clear and descriptive commit messages that follow standard Commit Message Conventions.
   Ensure your contributions are well-documented and include relevant comments.
 
 We appreciate your efforts and look forward to your contributions! Let's make this project even better together.
