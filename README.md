@@ -1,4 +1,4 @@
-# LLMs-With--Autodesk-Dynamo-Python
+# LLMs-with-Autodesk-Dynamo-Python
 
 <img src="https://raw.githubusercontent.com/DynamoDS/Dynamo/master/doc/distrib/Images/dynamo_logo_dark.png" width="300"/> <img src="https://www.nomic.ai/gpt4all/gpt4all_word.svg" width="300"/> <img src="https://chunte-hfba.static.hf.space/images/Brand%20Logos/hf-logo-with-white-title.png" width="300"/>
 
