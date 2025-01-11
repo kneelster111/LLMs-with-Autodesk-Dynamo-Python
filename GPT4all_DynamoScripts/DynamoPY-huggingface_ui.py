@@ -1,3 +1,11 @@
+"""
+Author: Neel Shah
+Email: [neel.shah.gbim@gmail.com](mailto:neel.shah.gbim@gmail.com)
+GitHub: https://github.com/kneelster111/LLMs-with-Autodesk-Dynamo-Python
+
+This project is licensed under the Creative Commons Attribution-Noncommercial (CC BY-NC) license, allowing modification and redistribution for non-commercial purposes only, with attribution to the original author. The code is experimental and provided "as is" with no warranty. Use at your own risk.
+"""
+
 # Import necessary Dynamo and Revit modules
 import clr
 import asyncio
