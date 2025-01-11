@@ -17,7 +17,7 @@ Explore the possibilities with LLMs and elevate your Autodesk experience to new 
 - **Cpython** - Script uses Cpython , will look to provide code in Ironpython 2.7 (if possible), and the new [Pythonnet3 ](https://dynamobim.org/pythonnet3-a-new-dynamo-python-to-fix-everything/)
 - **GPT4All -** https://github.com/nomic-ai/gpt4all
 - **Huggingface** - (optional) https://huggingface.co/
-- **Smolagents** - (optional) [https://github.com/huggingface/smolagents](https://github.com/huggingface/smolagents)
+- **Smolagents** - (optional) [https://github.com/huggingface/smolagents](https://github.com/huggingface/smolagents) - An Autonomous Agent that can Search the Web to Create app (Experimental)
   
 ## Installation
 
