@@ -1,0 +1,432 @@
+{
+  "Uuid": "34954235-0d7d-4490-9d78-51cc7f815761",
+  "IsCustomNode": false,
+  "Description": "",
+  "Name": "PY - InstallCustomPythonModules",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "smolagents.agents",
+      "Id": "9b9a9afb8f8b4a9d9edfc24489f12776",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "ce2c6b71ee554f849a066cc612e978b4",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a string."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSVarArgFunction, DynamoCore",
+      "FunctionSignature": "DSCore.String.Split@string,string[]",
+      "FunctionType": "VariableArgument",
+      "NodeType": "FunctionNode",
+      "Id": "b557daf835e14e94b30fd249edc0c60c",
+      "Inputs": [
+        {
+          "Id": "efa7ae14e623493cba3013449d9cb2ff",
+          "Name": "string",
+          "Description": "String to split up\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "52269ff659b74f94b793c8a38a8f4d29",
+          "Name": "separator0",
+          "Description": "Strings that, if present, determine the end and start of a split.\n\nstring[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "a7cc644102504d5d98e8210ff57b849c",
+          "Name": "strings",
+          "Description": "List of strings made from the input string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Divides a single string into a list of strings, with divisions determined by the given separator strings.\n\nString.Split (string: string, separators: string[]): string[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "\",\";",
+      "Id": "6f2d743e25684d70b187f8896136bd84",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "8289907a788a49609baac62132f27215",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Load the Python Standard and DesignScript Libraries\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\nOUT= sys.path,sys.version",
+      "Engine": "CPython3",
+      "EngineName": "CPython3",
+      "VariableInputPorts": true,
+      "Id": "9da5dedcbd974b69ba02cca1d474e17f",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "69d4fd517fa944d9a798fe351d778677",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "599ef4db9a954e3087e0d2df88cc273b",
+      "Inputs": [
+        {
+          "Id": "80a92151a669434b92a6f0ec482fde4b",
+          "Name": "",
+          "Description": "Node to show output from",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "c8d8cadecef14671beb383e522167d21",
+          "Name": "",
+          "Description": "Node output",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Visualize the node's output"
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# More info here\r\n# https://github-wiki-see.page/m/DynamoDS/Dynamo/wiki/Customizing-Dynamo%27s-Python-3-installation\r\nimport sys\r\nimport clr\r\nimport System\r\nimport re\r\n\r\n# Print system paths\r\nprint('\\n'.join(sys.path))\r\n\r\n# Get Python engine name\r\npyEngineName = sys.implementation.name \r\n\r\n# Add reference to Windows Forms\r\nclr.AddReference(\"System.Windows.Forms\")\r\nimport System.Windows.Forms\r\nfrom System.Windows.Forms import MessageBox, MessageBoxButtons, MessageBoxIcon\r\n\r\n# Load DynamoCore assembly and get version\r\nfrom System.Reflection import Assembly\r\ndynamo = Assembly.Load('DynamoCore')\r\ndynamo_version = str(dynamo.GetName().Version)\r\ndynamo_version = tuple(int(x) for x in dynamo_version.split(\".\"))\r\nprint('dynamo_version', dynamo_version)\r\n\r\ninit_setup = False\r\n\r\n# Check if Python engine is not IronPython and Dynamo version is greater than 2.8.0.0\r\nif pyEngineName != \"ironpython\" and dynamo_version > (2, 8, 0, 0):\r\n    clr.AddReference('Python.Included')\r\n    import Python.Included as pyInc\r\n    path_py3_lib = pyInc.Installer.EmbeddedPythonHome\r\n    import platform, os, subprocess, importlib.util\r\n    from System import Environment\r\n    from System.Net import WebClient\r\n\r\n    # Get paths\r\n    assert os.path.isdir(path_py3_lib)\r\n    pipDirPath = os.path.join(path_py3_lib, 'Scripts')\r\n    pipfilePath = pipDirPath + \"\\\\pip\"\r\n    get_pip_path = os.path.join(path_py3_lib, 'get-pip.py')\r\n    site_packagepath = os.path.join(path_py3_lib, 'Lib\\\\site-packages')\r\n    lib_path = os.path.join(path_py3_lib, 'Lib')\r\n\r\n    # Download get-pip.py if not present\r\n    if not os.path.isfile(get_pip_path):\r\n        client = WebClient()\r\n        client.DownloadFile('https://bootstrap.pypa.io/get-pip.py', get_pip_path)\r\n\r\n    filepy_pth = f'python{sys.version_info.major}{sys.version_info.minor}._pth'\r\n    pthFilePath = os.path.join(path_py3_lib, filepy_pth)\r\n    assert os.path.isfile(pthFilePath), f\"Error file {pthFilePath} not found\"\r\n\r\n    # Update pthFilePath\r\n    with open(pthFilePath, 'r+') as f:\r\n        lines = f.readlines()\r\n        for idx, line in enumerate(lines):\r\n            if re.match(r'#import site', line):\r\n                lines[idx] = re.sub(r'#', '', line)\r\n                f.writelines(lines)\r\n                break\r\n        # Add site-packages\r\n        if re.search(r'./Lib/site-packages', lines[-1]) is None:\r\n            f.write(\"\\n./Lib/site-packages\")\r\n\r\n    # Install pip if not installed\r\n    if not os.path.isdir(pipDirPath):\r\n        print(f'installing pip in local Python environment: {path_py3_lib}')\r\n        subprocess.Popen([\"python\", get_pip_path])\r\n        try:\r\n            subprocess.Popen([\"python\", '-m', pipfilePath, 'install', '--upgrade pip'], cwd=path_py3_lib)\r\n        except Exception as ex:\r\n            print(str(ex))\r\n        init_setup = True\r\n        MessageBox.Show(\"Initialization in Progress...\\nWhen installation finished, close Dynamo and relaunch this script to install packages\", \"Initialization In Progress...\", MessageBoxButtons.OK, MessageBoxIcon.Warning)\r\n        raise Exception(\"close Dynamo and relaunch this script to install packages\")\r\n    else:\r\n        print('pip was already installed for this local Python environment')\r\n        init_setup = False\r\n\r\n    # Install packages\r\n    installPackages = IN[0]\r\n    dict_result = {\"out\": [], \"error_warning\": []}\r\n    if installPackages and not init_setup:\r\n        sys.path.append(site_packagepath)\r\n        sys.path.append(lib_path)\r\n        for packageName in installPackages:\r\n            spec = importlib.util.find_spec(packageName)\r\n            if spec is None:\r\n                try:\r\n                    result = subprocess.run([pipfilePath, \"install\", '--target=' + site_packagepath, packageName], capture_output=True, cwd=path_py3_lib)\r\n                    dict_result[\"out\"].append(result.stdout.decode('utf-8'))\r\n                    dict_result[\"error_warning\"].append(result.stderr.decode('utf-8'))\r\n                except Exception as ex:\r\n                    dict_result[\"error_warning\"].append(f'error while installing {packageName}, {ex}')\r\n            else:\r\n                dict_result[\"out\"].append(f\"package {packageName} is already installed\")\r\n\r\n        # Check result\r\n        if False:\r\n            import numpy as np\r\n            import pandas as pd\r\n        MessageBox.Show(\"Python Installation and Configuration completed successfully!\", \"Python Installation\", MessageBoxButtons.OK, MessageBoxIcon.Information)\r\n        OUT = dict_result, None\r\n\r\nelif pyEngineName == \"ironpython\" and dynamo_version > (2, 8, 0, 0):\r\n    MessageBox.Show(\"Switch this node to the CPython3 engine and then rerun the script!\", \"Python Installation\", MessageBoxButtons.OK, MessageBoxIcon.Warning)\r\n\r\nelse:\r\n    MessageBox.Show(\"Python Installation and Configuration completed successfully!\", \"Python Installation\", MessageBoxButtons.OK, MessageBoxIcon.Information)\r\n",
+      "Engine": "CPython3",
+      "EngineName": "CPython3",
+      "VariableInputPorts": true,
+      "Id": "7ce4660958904d67834df73051de3b7a",
+      "Inputs": [
+        {
+          "Id": "e50d5ea35de54d17965861fb983140bd",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "3535cd09a20a4087b5d569a056f49947",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "45b1d071bfcd4c8599db1a541605a567",
+      "Inputs": [
+        {
+          "Id": "83b44580575f467296f2cc8d642d6770",
+          "Name": "",
+          "Description": "Node to show output from",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "69e3c2939e4144bf9942c33fd653f239",
+          "Name": "",
+          "Description": "Node output",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Visualize the node's output"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "ce2c6b71ee554f849a066cc612e978b4",
+      "End": "efa7ae14e623493cba3013449d9cb2ff",
+      "Id": "df9d4c32e83c4adc92db66cdf35f2f71",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "a7cc644102504d5d98e8210ff57b849c",
+      "End": "e50d5ea35de54d17965861fb983140bd",
+      "Id": "a59a8685bd164392bbcda11c0dcef6dc",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "8289907a788a49609baac62132f27215",
+      "End": "52269ff659b74f94b793c8a38a8f4d29",
+      "Id": "0d2cbae4a96b49938c50b978ce9f7c5d",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "69d4fd517fa944d9a798fe351d778677",
+      "End": "83b44580575f467296f2cc8d642d6770",
+      "Id": "f56613fa234b4d2d858d103f7f9f2f01",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "3535cd09a20a4087b5d569a056f49947",
+      "End": "80a92151a669434b92a6f0ec482fde4b",
+      "Id": "c07af58e8b9249b2b740f443869aeada",
+      "IsHidden": "False"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Thumbnail": "",
+  "GraphDocumentationURL": null,
+  "ExtensionWorkspaceData": [
+    {
+      "ExtensionGuid": "28992e1d-abb9-417f-8b1b-05e053bee670",
+      "Name": "Properties",
+      "Version": "2.16",
+      "Data": {}
+    },
+    {
+      "ExtensionGuid": "DFBD9CC0-DB40-457A-939E-8C8555555A9D",
+      "Name": "Generative Design",
+      "Version": "3.0",
+      "Data": {}
+    }
+  ],
+  "Author": "",
+  "Linting": {
+    "activeLinter": "None",
+    "activeLinterId": "7b75fb44-43fd-4631-a878-29f4d5d8399a",
+    "warningCount": 0,
+    "errorCount": 0
+  },
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.16.4.10216",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "ConnectorPins": [],
+    "NodeViews": [
+      {
+        "Name": "String",
+        "ShowGeometry": true,
+        "Id": "9b9a9afb8f8b4a9d9edfc24489f12776",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -275.53631385135691,
+        "Y": 1006.9061077774056
+      },
+      {
+        "Name": "String.Split",
+        "ShowGeometry": true,
+        "Id": "b557daf835e14e94b30fd249edc0c60c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 66.463686148643092,
+        "Y": 1201.9061077774056
+      },
+      {
+        "Name": "Code Block",
+        "ShowGeometry": true,
+        "Id": "6f2d743e25684d70b187f8896136bd84",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -122.53631385135691,
+        "Y": 1263.9061077774056
+      },
+      {
+        "Name": "py - ys.path,sys.version",
+        "ShowGeometry": true,
+        "Id": "9da5dedcbd974b69ba02cca1d474e17f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -254.391715191279,
+        "Y": 719.230642846924
+      },
+      {
+        "Name": "Watch",
+        "ShowGeometry": true,
+        "Id": "599ef4db9a954e3087e0d2df88cc273b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 828.00078756184848,
+        "Y": 1171.5505261429873
+      },
+      {
+        "Name": "PY - install custom python modules.",
+        "ShowGeometry": true,
+        "Id": "7ce4660958904d67834df73051de3b7a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 446.77474938458192,
+        "Y": 1189.9783546792619
+      },
+      {
+        "Name": "Watch",
+        "ShowGeometry": true,
+        "Id": "45b1d071bfcd4c8599db1a541605a567",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 141.59040195027455,
+        "Y": 726.51745413524532
+      }
+    ],
+    "Annotations": [
+      {
+        "Id": "2575213a212e4be5a6b7da07feab5b87",
+        "Title": "Control - get sys path and version",
+        "DescriptionText": null,
+        "IsExpanded": true,
+        "WidthAdjustment": 0.0,
+        "HeightAdjustment": 0.0,
+        "Nodes": [
+          "9da5dedcbd974b69ba02cca1d474e17f",
+          "45b1d071bfcd4c8599db1a541605a567"
+        ],
+        "HasNestedGroups": false,
+        "Left": -264.391715191279,
+        "Top": 660.230642846924,
+        "Width": 692.98211714155354,
+        "Height": 364.28681128832136,
+        "FontSize": 24.0,
+        "InitialTop": 719.230642846924,
+        "InitialHeight": 152.28681128832136,
+        "TextblockHeight": 49.0,
+        "Background": "#FF90EE90"
+      },
+      {
+        "Id": "488b7c108b9d4ad08fdd3216fa61e66a",
+        "Title": "Control PY - install custom python modules.",
+        "DescriptionText": null,
+        "IsExpanded": true,
+        "WidthAdjustment": 0.0,
+        "HeightAdjustment": 0.0,
+        "Nodes": [
+          "599ef4db9a954e3087e0d2df88cc273b",
+          "7ce4660958904d67834df73051de3b7a"
+        ],
+        "HasNestedGroups": false,
+        "Left": 436.77474938458192,
+        "Top": 1112.5505261429873,
+        "Width": 528.22603817726656,
+        "Height": 221.42782853627455,
+        "FontSize": 24.0,
+        "InitialTop": 1171.5505261429873,
+        "InitialHeight": 163.42782853627455,
+        "TextblockHeight": 49.0,
+        "Background": "#FF90EE90"
+      },
+      {
+        "Id": "afb977883a424da3bac5b619315d9d5a",
+        "Title": "Input - string input for the python modules you want to import",
+        "DescriptionText": null,
+        "IsExpanded": true,
+        "WidthAdjustment": 0.0,
+        "HeightAdjustment": 0.0,
+        "Nodes": [
+          "9b9a9afb8f8b4a9d9edfc24489f12776",
+          "b557daf835e14e94b30fd249edc0c60c",
+          "6f2d743e25684d70b187f8896136bd84"
+        ],
+        "HasNestedGroups": false,
+        "Left": -285.53631385135691,
+        "Top": 918.90610777740562,
+        "Width": 643.0,
+        "Height": 477.0,
+        "FontSize": 24.0,
+        "InitialTop": 1006.9061077774056,
+        "InitialHeight": 402.0,
+        "TextblockHeight": 78.0,
+        "Background": "#FFB0C4DE"
+      }
+    ],
+    "X": 575.51756587526722,
+    "Y": -927.64930937466238,
+    "Zoom": 1.1793641433910489
+  }
+}
