@@ -1,6 +1,6 @@
 # Gpt4all-Autodesk-Dynamo-Python
 
-<img src="https://raw.githubusercontent.com/DynamoDS/Dynamo/master/doc/distrib/Images/dynamo_logo_dark.png" width="300"/> <img src="https://www.nomic.ai/gpt4all/gpt4all_word.svg" width="300"/>
+<img src="https://raw.githubusercontent.com/DynamoDS/Dynamo/master/doc/distrib/Images/dynamo_logo_dark.png" width="300"/> <img src="https://www.nomic.ai/gpt4all/gpt4all_word.svg" width="300"/> <img src="https://chunte-hfba.static.hf.space/images/Brand%20Logos/hf-logo-with-white-title.png" width="300"/>
 
 ## Description
 
@@ -83,8 +83,7 @@ with model.chat_session():
 ### Demo GIF
 
 Below is a demonstration of how to use the app:
-
-![App Usage](url-to-your-gif.gif)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/your-video-id" frameborder="0" allowfullscreen></iframe>
 
 This video shows the app in action, using huggingface, including basic usage and features.
 
@@ -111,3 +110,13 @@ When contributing, please adhere to the following guidelines:
   Ensure your contributions are well-documented and include relevant comments.
 
 We appreciate your efforts and look forward to your contributions! Let's make this project even better together.
+
+##Disclaimer and License
+
+### License
+This project is licensed under the Creative Commons Attribution-NonCommercial (CC BY-NC) license, allowing modification and redistribution for non-commercial purposes only, with attribution to the original author. The code is experimental and provided "as is" with no warranty. Use at your own risk. More info.
+
+### Disclaimer
+This code is experimental and may not be suitable for production environments. The author provides no guarantees regarding its reliability or performance. By using this code, you acknowledge and accept the risks involved, and you are solely responsible for any issues that arise from its use. The code is provided "as is" without any warranty, either express or implied.
+
+
