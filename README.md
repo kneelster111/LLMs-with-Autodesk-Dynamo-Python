@@ -1,4 +1,7 @@
 # Gpt4all-Autodesk-Dynamo-Python
+
+<img src="https://raw.githubusercontent.com/DynamoDS/Dynamo/master/doc/distrib/Images/dynamo_logo_dark.png" width="300"/> <img src="https://www.nomic.ai/gpt4all/gpt4all_word.svg" width="300"/>
+
 ## Description
 
 Discover a new level of efficiency and innovation with our latest workflow that seamlessly integrates (Large Language Models) LLMs, Using GPT4ALL, and HuggingFace -a free and open-source AI python libraries and model- with Autodesk products. Our approach leverages the power of Python to bring advanced AI capabilities to your favorite design and engineering tools.
