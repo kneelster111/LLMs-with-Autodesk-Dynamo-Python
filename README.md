@@ -62,11 +62,12 @@ with model.chat_session():
 4.  **HuggingFace Login** - Optionally If you want to test the Hugging Face script, you will first need to Signup and log in to your Hugging Face account. After logging in, provide your access token in the python.exe script.
 
 ```
-from huggingface_hub import login
+from huggingface_hub import login , InferenceClient
 login("insert user token")
 messages = [{"role": "user", "content": "What is the capital of France?"}]
 client = InferenceClient("meta-llama/Meta-Llama-3-8B-Instruct")
-print(client.chat_completion(messages, max_tokens=100))
+response = client.chat_completion(messages, max_tokens=100)
+print(response)
 ```
 
 ### 6. GPT4ALL Assistant Dynamo Files
