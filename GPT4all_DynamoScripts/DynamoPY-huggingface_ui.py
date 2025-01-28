@@ -1,11 +1,3 @@
-"""
-Author: Neel Shah
-Email: [neel.shah.gbim@gmail.com](mailto:neel.shah.gbim@gmail.com)
-GitHub: https://github.com/kneelster111/LLMs-with-Autodesk-Dynamo-Python
-
-This project is licensed under the Creative Commons Attribution-Noncommercial (CC BY-NC) license, allowing modification and redistribution for non-commercial purposes only, with attribution to the original author. The code is experimental and provided "as is" with no warranty. Use at your own risk.
-"""
-
 # Import necessary Dynamo and Revit modules
 import clr
 import asyncio
@@ -224,21 +216,37 @@ class ChatForm(System.Windows.Forms.Form):
                 file.write(self.chatHistory.Text)
 
     def ReadRevitButtonClick(self, sender, EventArgs):
-        words = revitdata.split()
-        limited_text = ' '.join(words[:2000])
-        
-        messages = [{"role": "user", "content":f"System: Revit Model / Project Data, waiting for User next prompt. Data: {limited_text}"}]
-        response = client.chat_completion(messages, max_tokens=1000)
-        
-        # Extract and format the response
-        if 'choices' in response:
-            result = response['choices'][0]['message']['content']
-        else:
-            result = "Sorry, I couldn't get a response."
+        def send_data_in_chunks(data, chunk_size=2000):
+            words = data.split()
+            for i in range(0, len(words), chunk_size):
+                yield ' '.join(words[i:i + chunk_size])
 
-        self.result = result
-        self.chatHistory.AppendText(f"Bot: {result}\n")
-        self.conversation_history.append(f"Bot: {result}")  # Add bot response to history
+        data_chunks = send_data_in_chunks(revitdata, 2000)
+        self.result = ""
+        
+        for chunk in data_chunks:
+            # Append user message to chat history
+            #self.chatHistory.AppendText(f"User: {chunk}\n")
+            self.conversation_history.append(f"User: {chunk}")
+            
+            # Pass the conversation history to the model
+            history = "\n".join(self.conversation_history)
+            
+            # Load and use the model
+            messages = [{"role": "user", "content": history}]
+            response = client.chat_completion(messages, max_tokens=1000)
+            
+            # Extract and format the response
+            if 'choices' in response:
+                result = response['choices'][0]['message']['content']
+            else:
+                result = "Sorry, I couldn't get a response."
+            
+            self.result += result + "\n"
+            
+            # Append bot response to chat history
+            #self.chatHistory.AppendText(f"Bot: {result}\n")
+            self.conversation_history.append(f"Bot: {result}")
         self.chatInput.Focus()
 
     def extract_code(self, text):
